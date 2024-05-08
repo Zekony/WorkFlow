@@ -46,5 +46,11 @@ dependencies {
     implementation(libs.bundles.core)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+
     implementation(libs.androidx.navigation)
+    implementation(libs.bundles.orbit)
+
+
+    androidTestImplementation(platform(libs.compose.bom))
+    implementation(libs.bundles.test)
 }

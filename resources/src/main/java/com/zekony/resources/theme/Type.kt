@@ -16,13 +16,24 @@ val pilat_font_family = FontFamily(
     )
 )
 
+val inter_font_family = FontFamily(
+    listOf(
+        Font(R.font.inter_light, FontWeight.Light),
+        Font(R.font.inter_medium, FontWeight.Medium)
+    )
+)
+
+
 val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = pilat_font_family,
-        fontWeight = FontWeight.Normal,
+    bodyMedium = TextStyle(
+        fontFamily = inter_font_family,
+        fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = inter_font_family,
+        fontWeight = FontWeight.Light,
+        fontSize = 12.sp,
     ),
     titleLarge = TextStyle(
         fontFamily = pilat_font_family,

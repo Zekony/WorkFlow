@@ -42,10 +42,15 @@ android {
 dependencies {
 
     implementation(project(":resources"))
+    implementation(project(":utility"))
 
     implementation(libs.bundles.core)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
-    implementation(libs.androidx.navigation)
 
+    implementation(libs.androidx.navigation)
+    implementation(libs.bundles.orbit)
+
+    androidTestImplementation(platform(libs.compose.bom))
+    implementation(libs.bundles.test)
 }

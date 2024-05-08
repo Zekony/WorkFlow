@@ -12,7 +12,9 @@ appcompat = "1.6.1"
 material = "1.12.0"
 navigation = "2.7.7"
 orbit = "6.0.0"
-
+kapt = "1.0.0"
+dagger-hilt = "2.42"
+androidx-dagger-hilt = "1.2.0"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -30,6 +32,14 @@ ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-icons = { group = "androidx.compose.material", name = "material-icons-core" }
+
+#Hilt
+hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger-hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "dagger-hilt" }
+hilt-androidx-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidx-dagger-hilt" }
+hilt-androidx-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx-dagger-hilt" }
+
 
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 
@@ -47,6 +57,7 @@ orbit-compose = { group = "org.orbit-mvi", name = "orbit-compose", version.ref =
 com-android-application = { id = "com.android.application", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
 com-android-library = { id = "com.android.library", version.ref = "agp" }
+com-google-dagger = { id = "com.google.dagger.hilt.android", version.ref = "dagger-hilt" }
 
 [bundles]
 core = ["core-ktx", "lifecycle-runtime-ktx", "activity-compose"]

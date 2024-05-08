@@ -17,6 +17,7 @@ rootProject.name = "WorkFlow"
 include(":app")
 include(":navigation")
 include(":feature:preview")
-include(":design-system")
+include(":utility")
 include(":resources")
 include(":feature:home")
+include(":feature:registration")

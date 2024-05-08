@@ -2,10 +2,12 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.google.dagger)
+    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.zekony.resources"
+    namespace = "com.zekony.feature.registration"
     compileSdk = 34
 
     defaultConfig {
@@ -41,9 +43,21 @@ android {
 
 dependencies {
 
+    implementation(project(":resources"))
+    implementation(project(":utility"))
+
     implementation(libs.bundles.core)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+    implementation(libs.compose.icons)
+
+    implementation(libs.androidx.navigation)
+    implementation(libs.bundles.orbit)
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.androidx.compose)
+    kapt(libs.hilt.androidx.compiler)
 
     androidTestImplementation(platform(libs.compose.bom))
     implementation(libs.bundles.test)

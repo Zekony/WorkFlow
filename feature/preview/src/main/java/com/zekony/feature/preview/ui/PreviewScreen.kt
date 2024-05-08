@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.zekony.resources.R
+import com.zekony.utility.sharedComposables.PrimaryButton
 
 @Composable
 fun PreviewScreen(navigate: () -> Unit) {
@@ -66,19 +67,5 @@ fun PreviewScreen(navigate: () -> Unit) {
             )
         }
         PrimaryButton(text = "Let's Start") { navigate() }
-    }
-}
-
-@Composable
-fun PrimaryButton(text: String, onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        shape = RectangleShape,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.primary
-        ),
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Text(text)
     }
 }

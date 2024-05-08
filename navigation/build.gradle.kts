@@ -42,6 +42,8 @@ android {
 dependencies {
 
     implementation(project(":feature:preview"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:registration"))
     implementation(project(":resources"))
 
     implementation(libs.bundles.core)
@@ -49,4 +51,6 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.androidx.navigation)
 
+    androidTestImplementation(platform(libs.compose.bom))
+    implementation(libs.bundles.test)
 }

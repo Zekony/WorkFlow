@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.resources"
+    namespace = "com.zekony.utility"
     compileSdk = 34
 
     defaultConfig {
@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.bundles.core)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+    implementation(libs.bundles.orbit)
 
     androidTestImplementation(platform(libs.compose.bom))
     implementation(libs.bundles.test)
