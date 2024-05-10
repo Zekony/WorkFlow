@@ -9,17 +9,17 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.zekony.feature.home.HOME_ENTRY
 import com.zekony.feature.home.homeEntry
 import com.zekony.feature.preview.PREVIEW_ROUTE
 import com.zekony.feature.preview.previewEntry
+import com.zekony.feature.registration.REGISTRATION_ROUTE
+import com.zekony.feature.registration.registrationEntry
 import com.zekony.resources.theme.WorkFlowTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-
     WorkFlowTheme {
         Scaffold(
             bottomBar = { AppBottomBar(navController) }
@@ -31,12 +31,13 @@ fun Navigation() {
             ) {
                 previewEntry(
                     navigate = {
-                        navController.navigate(HOME_ENTRY) {
+                        navController.navigate(REGISTRATION_ROUTE) {
                             popUpTo(PREVIEW_ROUTE) { inclusive = true }
                         }
                     }
                 )
                 homeEntry()
+                registrationEntry()
             }
         }
     }

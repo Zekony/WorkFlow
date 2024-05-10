@@ -25,15 +25,20 @@ val inter_font_family = FontFamily(
 
 
 val Typography = Typography(
+    bodyLarge = TextStyle(
+        fontFamily = inter_font_family,
+        fontWeight = FontWeight.Medium,
+        fontSize = 26.sp,
+    ),
     bodyMedium = TextStyle(
         fontFamily = inter_font_family,
         fontWeight = FontWeight.Medium,
-        fontSize = 16.sp,
+        fontSize = 18.sp,
     ),
     bodySmall = TextStyle(
         fontFamily = inter_font_family,
         fontWeight = FontWeight.Light,
-        fontSize = 12.sp,
+        fontSize = 14.sp,
     ),
     titleLarge = TextStyle(
         fontFamily = pilat_font_family,

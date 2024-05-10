@@ -10,15 +10,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 
 @Composable
-fun PrimaryButton(text: String, onClick: () -> Unit) {
+fun PrimaryButton(text: String, enabled: Boolean = true, onClick: () -> Unit) {
     Button(
         onClick = onClick,
+        enabled = enabled,
         shape = RectangleShape,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(text)
+        Text(text, style = MaterialTheme.typography.bodyMedium)
     }
 }
