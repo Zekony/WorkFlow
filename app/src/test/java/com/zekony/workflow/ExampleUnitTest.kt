@@ -1,4 +1,4 @@
-package com.zekony.workflow2
+package com.zekony.workflow
 
 import org.junit.Test
 

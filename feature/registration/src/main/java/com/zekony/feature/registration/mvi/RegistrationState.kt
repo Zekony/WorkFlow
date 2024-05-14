@@ -7,6 +7,7 @@ data class RegistrationState(
     val passwordInput: String = "",
     val termsAgreed: Boolean = false,
     val passwordVisible: Boolean = false,
+    val registrationError: String? = null
 
 )
 

@@ -49,6 +49,7 @@ import com.zekony.utility.sharedComposables.PrimaryButton
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun RegistrationScreen(state: RegistrationState, onEvent: (RegistrationEvent) -> Unit) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -169,7 +170,7 @@ fun RegistrationScreen(state: RegistrationState, onEvent: (RegistrationEvent) ->
             )
         }
         OutlinedButton(
-            onClick = { },
+            onClick = { onEvent(RegistrationEvent.OnGoogleButtonClick )},
             colors = ButtonDefaults.outlinedButtonColors(
                 containerColor = MaterialTheme.colorScheme.background
             ),
@@ -198,7 +199,7 @@ fun RegistrationScreen(state: RegistrationState, onEvent: (RegistrationEvent) ->
                 text = "Log in",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.clickable { }
+                modifier = Modifier.clickable { onEvent(RegistrationEvent.ToSigningScreen) }
             )
         }
     }
