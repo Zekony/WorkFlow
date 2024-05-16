@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.google.dagger)
+    id("kotlin-kapt")
 }
 
 android {
@@ -15,15 +17,6 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -41,7 +34,10 @@ android {
 
 dependencies {
 
+    implementation(project(":domain:registration"))
+    implementation(project(":domain:home"))
     implementation(project(":resources"))
+    implementation(project(":utility"))
 
     implementation(libs.bundles.core)
     implementation(platform(libs.compose.bom))
@@ -50,6 +46,13 @@ dependencies {
     implementation(libs.androidx.navigation)
     implementation(libs.bundles.orbit)
 
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.androidx.compose)
+    kapt(libs.hilt.androidx.compiler)
+
+    implementation(libs.firebase.auth)
+    implementation(libs.android.gms)
 
     androidTestImplementation(platform(libs.compose.bom))
     implementation(libs.bundles.test)
