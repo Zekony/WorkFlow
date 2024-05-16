@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="home_screen">Home</string>
+    <string name="chat_screen">Chat</string>
+    <string name="calendar_screen">Calendar</string>
+    <string name="notification_screen">Notification</string>
+</resources>

@@ -1,13 +1,12 @@
 package com.zekony.navigation
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.zekony.feature.home.HOME_ROUTE
 import com.zekony.feature.home.homeEntry
@@ -21,9 +20,15 @@ import com.zekony.resources.theme.WorkFlowTheme
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
+    val noBottomBarScreens = listOf(
+        REGISTRATION_ROUTE, PREVIEW_ROUTE
+    )
+    val currentDestination = navController.currentBackStackEntryAsState().value?.destination?.route
     WorkFlowTheme {
         Scaffold(
-            bottomBar = { AppBottomBar(navController) }
+            bottomBar = {
+                if (!noBottomBarScreens.contains(currentDestination)) AppBottomBar(navController)
+            }
         ) { innerPadding ->
             NavHost(
                 navController,
@@ -37,7 +42,6 @@ fun Navigation() {
                         }
                     }
                 )
-                homeEntry()
                 registrationEntry(
                     navigateHome = {
                         navController.navigate(HOME_ROUTE) {
@@ -45,14 +49,8 @@ fun Navigation() {
                         }
                     }
                 )
+                homeEntry()
             }
         }
-    }
-}
-
-@Composable
-fun AppBottomBar(navController: NavHostController) {
-    BottomAppBar {
-
     }
 }
