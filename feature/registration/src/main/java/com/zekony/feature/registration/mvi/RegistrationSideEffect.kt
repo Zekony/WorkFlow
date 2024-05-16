@@ -1,8 +1,8 @@
 package com.zekony.feature.registration.mvi
 
 sealed interface RegistrationSideEffect {
-    object NavigateBack : RegistrationSideEffect
+    data object NavigateHomeScreen: RegistrationSideEffect
+    data object GoogleAuth: RegistrationSideEffect
 
-    object NavigateHomeScreen: RegistrationSideEffect
-    object GoogleAuth: RegistrationSideEffect
+    data object PostInputErrorMessage: RegistrationSideEffect
 }

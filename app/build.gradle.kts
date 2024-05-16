@@ -56,6 +56,9 @@ android {
 dependencies {
 
     implementation(project(":navigation"))
+    implementation(project(":data:registration"))
+    implementation(project(":domain:registration"))
+    implementation(project(":feature:registration"))
 
     implementation(libs.bundles.core)
 

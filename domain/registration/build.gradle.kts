@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.feature.registration"
+    namespace = "com.zekony.domain.registration"
     compileSdk = 34
 
     defaultConfig {
@@ -24,27 +24,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0"
-    }
 }
 
 dependencies {
-
-    implementation(project(":domain:registration"))
-    implementation(project(":resources"))
-    implementation(project(":utility"))
-
-    implementation(libs.bundles.core)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.bundles.compose)
-    implementation(libs.compose.icons)
-
-    implementation(libs.androidx.navigation)
-    implementation(libs.bundles.orbit)
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
@@ -52,8 +34,5 @@ dependencies {
     kapt(libs.hilt.androidx.compiler)
 
     implementation(libs.firebase.auth)
-    implementation(libs.android.gms)
-
-    androidTestImplementation(platform(libs.compose.bom))
-    implementation(libs.bundles.test)
+    implementation(libs.bundles.core)
 }

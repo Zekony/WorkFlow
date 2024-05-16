@@ -6,30 +6,28 @@ import android.content.IntentSender
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.BeginSignInRequest.GoogleIdTokenRequestOptions
 import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.tasks.await
-import javax.inject.Inject
 
-class GoogleAuthUiClient @Inject constructor(
+class GoogleAuthUiClient (
     context: Context,
     private val oneTapClient: SignInClient
 ) {
 
-     private var auth: FirebaseAuth = Firebase.auth
+    private var auth: FirebaseAuth = Firebase.auth
 
     suspend fun signIn(): IntentSender? {
         val result = try {
             oneTapClient.beginSignIn(
                 buildSignInRequest()
             ).await()
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
-            if(e is CancellationException) throw e
+            if (e is CancellationException) throw e
             null
         }
         return result?.pendingIntent?.intentSender
@@ -51,9 +49,9 @@ class GoogleAuthUiClient @Inject constructor(
                 },
                 errorMessage = null
             )
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
-            if(e is CancellationException) throw e
+            if (e is CancellationException) throw e
             SignInResult(
                 data = null,
                 errorMessage = e.message
@@ -65,9 +63,9 @@ class GoogleAuthUiClient @Inject constructor(
         try {
             oneTapClient.signOut().await()
             auth.signOut()
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
-            if(e is CancellationException) throw e
+            if (e is CancellationException) throw e
         }
     }
 
