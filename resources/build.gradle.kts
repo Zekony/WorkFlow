@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.resources"
+    namespace = "com.finto.resources"
     compileSdk = 34
 
     defaultConfig {

@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.domain.registration"
+    namespace = "com.finto.domain.registration"
     compileSdk = 34
 
     defaultConfig {
@@ -27,6 +27,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":utility"))
+
+    implementation(libs.bundles.core)
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
@@ -34,5 +37,4 @@ dependencies {
     kapt(libs.hilt.androidx.compiler)
 
     implementation(libs.firebase.auth)
-    implementation(libs.bundles.core)
 }

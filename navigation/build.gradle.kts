@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.navigation"
+    namespace = "com.finto.navigation"
     compileSdk = 34
 
     defaultConfig {
@@ -44,6 +44,8 @@ dependencies {
     implementation(project(":feature:preview"))
     implementation(project(":feature:home"))
     implementation(project(":feature:registration"))
+    implementation(project(":feature:taskDetails"))
+    implementation(project(":feature:createProject"))
     implementation(project(":resources"))
 
     implementation(libs.bundles.core)

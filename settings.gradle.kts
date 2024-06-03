@@ -16,12 +16,18 @@ dependencyResolutionManagement {
 rootProject.name = "WorkFlow"
 include(":app")
 include(":navigation")
-include(":feature:preview")
 include(":utility")
 include(":resources")
-include(":feature:home")
-include(":feature:registration")
-include(":data:registration")
+include(":settings")
+
+include(":domain:projects")
 include(":domain:registration")
-include(":data:home")
-include(":domain:home")
+
+include(":data:projects")
+include(":data:registration")
+
+include(":feature:preview")
+include(":feature:registration")
+include(":feature:home")
+include(":feature:taskDetails")
+include(":feature:createProject")

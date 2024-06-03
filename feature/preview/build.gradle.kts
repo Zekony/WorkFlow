@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.feature.preview"
+    namespace = "com.finto.feature.preview"
     compileSdk = 34
 
     defaultConfig {

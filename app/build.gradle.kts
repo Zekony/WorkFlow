@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.workflow"
+    namespace = "com.finto.workflow"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.zekony.workflow"
+        applicationId = "com.finto.workflow"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -34,6 +34,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -55,10 +56,17 @@ android {
 
 dependencies {
 
+    coreLibraryDesugaring(libs.desugarring)
+
     implementation(project(":navigation"))
     implementation(project(":data:registration"))
+    implementation(project(":data:projects"))
     implementation(project(":domain:registration"))
+    implementation(project(":domain:projects"))
+    implementation(project(":feature:home"))
     implementation(project(":feature:registration"))
+    implementation(project(":feature:taskDetails"))
+    implementation(project(":feature:createProject"))
 
     implementation(libs.bundles.core)
 
@@ -69,6 +77,7 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
 
     androidTestImplementation(platform(libs.compose.bom))
     implementation(libs.bundles.test)

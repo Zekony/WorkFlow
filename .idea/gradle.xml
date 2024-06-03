@@ -13,17 +13,20 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/data" />
-            <option value="$PROJECT_DIR$/data/home" />
+            <option value="$PROJECT_DIR$/data/projects" />
             <option value="$PROJECT_DIR$/data/registration" />
             <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/domain/home" />
+            <option value="$PROJECT_DIR$/domain/projects" />
             <option value="$PROJECT_DIR$/domain/registration" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/createProject" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/preview" />
             <option value="$PROJECT_DIR$/feature/registration" />
+            <option value="$PROJECT_DIR$/feature/taskDetails" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/resources" />
+            <option value="$PROJECT_DIR$/settings" />
             <option value="$PROJECT_DIR$/utility" />
           </set>
         </option>

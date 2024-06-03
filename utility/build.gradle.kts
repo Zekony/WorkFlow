@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.utility"
+    namespace = "com.finto.utility"
     compileSdk = 34
 
     defaultConfig {
@@ -25,6 +25,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -40,6 +41,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":resources"))
+    coreLibraryDesugaring(libs.desugarring)
 
     implementation(libs.bundles.core)
     implementation(platform(libs.compose.bom))

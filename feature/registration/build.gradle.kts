@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.feature.registration"
+    namespace = "com.finto.feature.registration"
     compileSdk = 34
 
     defaultConfig {

@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.zekony.feature.home"
+    namespace = "com.finto.feature.home"
     compileSdk = 34
 
     defaultConfig {
@@ -35,7 +35,7 @@ android {
 dependencies {
 
     implementation(project(":domain:registration"))
-    implementation(project(":domain:home"))
+    implementation(project(":domain:projects"))
     implementation(project(":resources"))
     implementation(project(":utility"))
 
