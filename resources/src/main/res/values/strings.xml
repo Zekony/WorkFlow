@@ -5,4 +5,14 @@
     <string name="chat_screen">Chat</string>
     <string name="calendar_screen">Calendar</string>
     <string name="notification_screen">Notification</string>
+    <string name="password_is_too_short">Password is too short</string>
+    <string name="password_special_symbols_error">Password should contain 1 uppercase letter, 1 number and 1 special symbol</string>
+    <string name="invalid_email_error">Invalid email</string>
+    <string name="name_is_too_short_error">Name is too short</string>
+    <string name="error_message">Error happened</string>
+    <string name="completed_tasks">Completed tasks</string>
+    <string name="ongoing_projects">Ongoing projects</string>
+    <string name="see_all">See all</string>
+    <string name="back_button">Back</string>
+    <string name="no_projects_yet">There are no projects yet\nPress middle button on a bottom bar to create one</string>
 </resources>
