@@ -2,10 +2,12 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.com.google.dagger)
+    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.finto.navigation"
+    namespace = "com.finto.feature.settings"
     compileSdk = 34
 
     defaultConfig {
@@ -15,15 +17,6 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -41,18 +34,26 @@ android {
 
 dependencies {
 
-    implementation(project(":feature:preview"))
-    implementation(project(":feature:home"))
-    implementation(project(":feature:registration"))
-    implementation(project(":feature:taskDetails"))
-    implementation(project(":feature:createProject"))
-    implementation(project(":feature:settings"))
+    implementation(project(":domain:registration"))
+    implementation(project(":domain:projects"))
     implementation(project(":resources"))
+    implementation(project(":utility"))
 
     implementation(libs.bundles.core)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+    implementation(libs.compose.icons)
+
     implementation(libs.androidx.navigation)
+    implementation(libs.bundles.orbit)
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.androidx.compose)
+    kapt(libs.hilt.androidx.compiler)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
 
     androidTestImplementation(platform(libs.compose.bom))
     implementation(libs.bundles.test)

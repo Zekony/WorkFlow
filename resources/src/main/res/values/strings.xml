@@ -23,4 +23,10 @@
     <string name="ok">OK</string>
     <string name="settings_description">settings</string>
     <string name="search_tasks_placeholder">Search tasks</string>
+    <string name="logout_button">Logout</string>
+    <string name="add_user_icon_description">add user icon</string>
+    <string name="change_name_description">change name</string>
+    <string name="sign_out_icon_description">sign out icon</string>
+    <string name="sign_out_button">sign out button</string>
+    <string name="profile">Profile</string>
 </resources>

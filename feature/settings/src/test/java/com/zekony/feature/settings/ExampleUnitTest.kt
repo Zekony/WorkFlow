@@ -1,4 +1,4 @@
-package com.finto.feature.settings
+package com.zekony.feature.settings
 
 import org.junit.Test
 
