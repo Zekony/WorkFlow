@@ -9,9 +9,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.finto.resources.R
 
 @Composable
-fun ProjectsTitle(titleText: String, onSeeAllClick: () -> Unit) {
+fun ProjectsTitle(
+    titleText: String,
+    onSeeAllClick: () -> Unit,
+    buttonText: String = stringResource(R.string.see_all)
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -19,7 +25,7 @@ fun ProjectsTitle(titleText: String, onSeeAllClick: () -> Unit) {
     ) {
         Text(text = titleText, style = MaterialTheme.typography.titleMedium)
         Text(
-            text = "See all",
+            text = buttonText,
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier.clickable { onSeeAllClick() }

@@ -28,7 +28,9 @@ android {
 
 dependencies {
     implementation(project(":domain:registration"))
+    implementation(project(":domain:projects"))
     implementation(project(":utility"))
+    implementation(project(":resources"))
 
     implementation(libs.bundles.core)
 
@@ -37,5 +39,11 @@ dependencies {
     implementation(libs.hilt.androidx.compose)
     kapt(libs.hilt.androidx.compiler)
 
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.database)
+
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.auth)
+    implementation(libs.googleid)
 }

@@ -3,8 +3,8 @@ plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.com.google.dagger)
+    alias(libs.plugins.com.google.gms)
     id("kotlin-kapt")
-    id("com.google.gms.google-services")
 }
 
 android {

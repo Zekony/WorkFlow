@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,15 +26,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.finto.resources.R
 import com.finto.feature.createproject.mvi.ProjectEvent
 import com.finto.feature.createproject.utility.increaseList
 
 @Composable
 fun TimePickerDialog(
-    title: String,
     onEvent: (ProjectEvent) -> Unit
 ) {
     val minutesList = (1..60).toMutableList().filter { it % 5 == 0 }.increaseList()
@@ -55,14 +57,15 @@ fun TimePickerDialog(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                modifier = Modifier,
-                text = title,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                text = stringResource(R.string.select_time),
                 style = MaterialTheme.typography.titleMedium
             )
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(vertical = 16.dp, horizontal = 48.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 NumbersLazyColumn(
@@ -84,11 +87,62 @@ fun TimePickerDialog(
                 TextButton(onClick = {
                     onEvent(ProjectEvent.PickerTime(hoursStateValue * 3600 + minutesStateValue * 60))
                 }) {
-                    Text(text = "OK", style = MaterialTheme.typography.titleMedium)
+                    Text(
+                        text = stringResource(R.string.ok),
+                        style = MaterialTheme.typography.titleMedium
+                    )
                 }
                 TextButton(onClick = { onEvent(ProjectEvent.ShowTimePickerDialog) }) {
-                    Text(text = "Cancel", style = MaterialTheme.typography.titleMedium)
+                    Text(
+                        text = stringResource(R.string.cancel),
+                        style = MaterialTheme.typography.titleMedium
+                    )
                 }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun RowScope.NumbersLazyColumn(
+    list: List<Int>,
+    lazyListState: LazyListState,
+    stateValue: Int
+) {
+    val flingBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
+
+    val size = 70.dp
+
+    LazyColumn(
+        modifier = Modifier
+            .height(size * 3)
+            .weight(1f),
+        state = lazyListState,
+        flingBehavior = flingBehavior
+    ) {
+        items(list) { num ->
+            val alpha = when (num % list.max() - stateValue) {
+                0 -> 1.0f
+                5, -5 -> 0.5f
+                else -> 0.3f
+            }
+            Box(
+                modifier = Modifier.height(size),
+                contentAlignment = Alignment.Center
+            ) {
+                val value = (num % list.max()).toString()
+                Text(
+                    text = if (value.length == 1) {
+                        value.padStart(2, '0')
+                    } else {
+                        value
+                    },
+                    style = MaterialTheme.typography.displayMedium,
+                    color = Color.White.copy(alpha = alpha),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
         }
     }
@@ -107,42 +161,3 @@ private fun calculateStateIndex(list: List<Int>, lazyListState: LazyListState): 
             )
         }
     }
-
-
-@OptIn(ExperimentalFoundationApi::class)
-@Composable
-fun NumbersLazyColumn(
-    list: List<Int>,
-    lazyListState: LazyListState,
-    stateValue: Int
-) {
-    val flingBehavior = rememberSnapFlingBehavior(lazyListState = lazyListState)
-
-    val size = 70.dp
-
-    LazyColumn(
-        modifier = Modifier.height(size * 3),
-        state = lazyListState,
-        flingBehavior = flingBehavior
-    ) {
-        items(list) {
-            val alpha = when (it % list.max() - stateValue) {
-                0 -> 1.0f
-                5, -5 -> 0.5f
-                else -> 0.3f
-            }
-            Box(
-                modifier = Modifier.height(size),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = (it % list.max()).toString(),
-                    style = MaterialTheme.typography.displayMedium,
-                    color = Color.White.copy(alpha = alpha),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                )
-            }
-        }
-    }
-}

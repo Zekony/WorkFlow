@@ -15,4 +15,12 @@
     <string name="see_all">See all</string>
     <string name="back_button">Back</string>
     <string name="no_projects_yet">There are no projects yet\nPress middle button on a bottom bar to create one</string>
+    <string name="create_new_project">Create New Project</string>
+    <string name="change_project">Change Project</string>
+    <string name="add_team_members">Add Team Members</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_time">Select time</string>
+    <string name="ok">OK</string>
+    <string name="settings_description">settings</string>
+    <string name="search_tasks_placeholder">Search tasks</string>
 </resources>

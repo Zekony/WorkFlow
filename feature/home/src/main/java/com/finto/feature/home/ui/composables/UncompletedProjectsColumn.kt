@@ -28,7 +28,7 @@ import com.finto.utility.sharedComposables.CustomCircularProgressIndicator
 fun ProjectsColumn(projectList: List<Project>, onEvent: (HomeEvent) -> Unit) {
     projectList.forEach { project ->
         val projectProgress =
-            (project.projectTasks.filter { it.completed == true }.size.toFloat() / project.projectTasks.size)
+            (project.projectTasks.filter { it.completed }.size.toFloat() / project.projectTasks.size)
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.surface)

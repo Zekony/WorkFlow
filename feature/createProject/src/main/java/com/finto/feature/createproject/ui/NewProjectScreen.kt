@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.finto.feature.createproject.mvi.ProjectEvent
 import com.finto.feature.createproject.mvi.ProjectState
@@ -23,6 +24,7 @@ import com.finto.feature.createproject.ui.composables.TimeDateRow
 import com.finto.feature.createproject.ui.composables.TimePickerDialog
 import com.finto.feature.createproject.ui.composables.TitleTextField
 import com.finto.feature.createproject.ui.composables.UsersRow
+import com.finto.resources.R
 import com.finto.utility.functions.getCurrentTimeInES
 import com.finto.utility.functions.getYearRange
 import com.finto.utility.sharedComposables.PrimaryButton
@@ -30,7 +32,6 @@ import com.finto.utility.sharedComposables.PrimaryButton
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewProjectScreen(state: ProjectState, onEvent: (ProjectEvent) -> Unit) {
-
 
     val selectableDates = object : SelectableDates {
         override fun isSelectableDate(utcTimeMillis: Long): Boolean {
@@ -40,7 +41,7 @@ fun NewProjectScreen(state: ProjectState, onEvent: (ProjectEvent) -> Unit) {
     val scrollState = rememberScrollState()
     val datePickerState = rememberDatePickerState(
         selectableDates = selectableDates,
-        yearRange = getYearRange(10)
+        yearRange = getYearRange(1)
     )
 
     if (state.showDatePickerDialog) {
@@ -58,10 +59,8 @@ fun NewProjectScreen(state: ProjectState, onEvent: (ProjectEvent) -> Unit) {
         }
     }
 
-
     if (state.showTimePickerDialog)
         TimePickerDialog(
-            title = "SelectDate",
             onEvent
         )
 
@@ -76,13 +75,19 @@ fun NewProjectScreen(state: ProjectState, onEvent: (ProjectEvent) -> Unit) {
 
         TitleTextField(state.currentProject.title, onEvent)
         DescriptionTextField(state.currentProject.description, onEvent)
-        Text(text = "Add Team Members", style = MaterialTheme.typography.titleMedium)
+        Text(
+            text = stringResource(R.string.add_team_members),
+            style = MaterialTheme.typography.titleMedium
+        )
 
         UsersRow(state.currentProject.projectMembers, onEvent)
 
         TimeDateRow(state.currentProject.dueDateEpochSeconds, onEvent)
 
-        PrimaryButton(text = if (state.currentProject.id.isNotEmpty()) "Save" else "Create", enabled = state.currentProject.title.isNotEmpty()) {
+        PrimaryButton(
+            text = if (state.currentProject.id.isNotEmpty()) "Save" else "Create",
+            enabled = state.currentProject.title.isNotEmpty()
+        ) {
             onEvent(ProjectEvent.CreateProject)
         }
     }

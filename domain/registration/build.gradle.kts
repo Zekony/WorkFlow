@@ -2,8 +2,6 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    alias(libs.plugins.com.google.dagger)
-    id("kotlin-kapt")
 }
 
 android {
@@ -28,13 +26,10 @@ android {
 
 dependencies {
     implementation(project(":utility"))
+    implementation(project(":domain:projects"))
 
     implementation(libs.bundles.core)
 
-    implementation(libs.hilt)
-    kapt(libs.hilt.compiler)
-    implementation(libs.hilt.androidx.compose)
-    kapt(libs.hilt.androidx.compiler)
-
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
 }

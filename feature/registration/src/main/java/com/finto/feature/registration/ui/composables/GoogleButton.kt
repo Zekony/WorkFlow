@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.finto.feature.registration.mvi.RegistrationEvent
@@ -20,8 +21,9 @@ import com.finto.resources.R
 
 @Composable
 fun GoogleButton(onEvent: (RegistrationEvent) -> Unit) {
+    val context = LocalContext.current
     OutlinedButton(
-        onClick = { onEvent(RegistrationEvent.OnGoogleButtonClick) },
+        onClick = { onEvent(RegistrationEvent.OnGoogleSignIn(context)) },
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = MaterialTheme.colorScheme.background
         ),

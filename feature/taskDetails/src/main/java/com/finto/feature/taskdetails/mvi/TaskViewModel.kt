@@ -1,10 +1,8 @@
 package com.finto.feature.taskdetails.mvi
 
-import android.util.Log
 import com.finto.domain.home.entities.Task
 import com.finto.domain.home.repositories.ProjectsRepository
 import com.finto.utility.MviViewModel
-import com.finto.utility.classes.ResultState
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -30,7 +28,6 @@ class TaskViewModel @AssistedInject constructor(
     init {
         dispatch(TaskEvent.Initialize)
     }
-
 
     override fun dispatch(event: TaskEvent) {
         when (event) {
@@ -69,24 +66,10 @@ class TaskViewModel @AssistedInject constructor(
 
     private fun getProjectById() = intent {
         projectsRepository.getProjectById(id).collect { result ->
-            when (result) {
-                is ResultState.Error -> {
-                    Log.d(
-                        "Zenais",
-                        "TaskViewModel: getProjectById error project message ${result.message}"
-                    )
-                }
-
-                is ResultState.Loading -> {
-
-                }
-
-                is ResultState.Success -> {
-                    result.data?.let {
-                        Log.d("Zenais", "TaskViewModel: getProjectById: project $it")
-                        reduce {
-                            state.copy(project = it)
-                        }
+            if (result.isSuccess) {
+                result.getOrNull()?.let {
+                    reduce {
+                        state.copy(project = it)
                     }
                 }
             }

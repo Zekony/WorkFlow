@@ -19,14 +19,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.finto.feature.home.mvi.HomeEvent
-import com.finto.feature.home.mvi.HomeState
 import com.finto.resources.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchRow(state: HomeState, onEvent: (HomeEvent) -> Unit) {
+fun SearchRow(searchInput: String = "", onEvent: (HomeEvent) -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -34,13 +34,13 @@ fun SearchRow(state: HomeState, onEvent: (HomeEvent) -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         TextField(
-            value = state.searchInput,
+            value = searchInput,
             onValueChange = { onEvent(HomeEvent.OnSearchInput(it)) },
             textStyle = MaterialTheme.typography.bodyMedium,
             colors = TextFieldDefaults.textFieldColors(containerColor = MaterialTheme.colorScheme.surface),
             placeholder = {
                 Text(
-                    text = "Search tasks",
+                    text = stringResource(R.string.search_tasks_placeholder),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.inversePrimary
                 )
@@ -48,7 +48,7 @@ fun SearchRow(state: HomeState, onEvent: (HomeEvent) -> Unit) {
             modifier = Modifier.weight(1f)
         )
         IconButton(
-            onClick = { },
+            onClick = { onEvent(HomeEvent.NavigateToSettings) },
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.primary, RectangleShape)
                 .weight(0.2f)
@@ -56,7 +56,7 @@ fun SearchRow(state: HomeState, onEvent: (HomeEvent) -> Unit) {
         ) {
             Icon(
                 painterResource(id = R.drawable.settings_icon),
-                contentDescription = "settings",
+                contentDescription = stringResource(id = R.string.settings_description),
                 modifier = Modifier.size(28.dp)
             )
         }

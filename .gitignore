@@ -10,6 +10,7 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
+keys_properties
 /captures
 .externalNativeBuild
 .cxx

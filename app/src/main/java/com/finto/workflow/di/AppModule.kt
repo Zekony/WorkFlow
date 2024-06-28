@@ -15,7 +15,6 @@ object AppModule {
 
     @Provides
     fun provideFirebaseInstance(@ApplicationContext context: Context): FirebaseApp? {
-
         return FirebaseApp.initializeApp(context)
     }
 
