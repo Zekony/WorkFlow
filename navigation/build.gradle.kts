@@ -53,7 +53,10 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
     implementation(libs.androidx.navigation)
-
+    implementation(libs.test.core)
     androidTestImplementation(platform(libs.compose.bom))
-    implementation(libs.bundles.test)
+    testImplementation(libs.bundles.test.common)
+    testImplementation(libs.bundles.test.local)
+    androidTestImplementation(libs.bundles.test.common)
+    androidTestImplementation(libs.bundles.test.android)
 }

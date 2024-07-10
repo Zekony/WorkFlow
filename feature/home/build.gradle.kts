@@ -30,6 +30,14 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.0"
     }
+    packaging {
+        resources.excludes.addAll(
+            listOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+            )
+        )
+    }
 }
 
 dependencies {
@@ -54,6 +62,11 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.android.gms)
 
+    implementation(libs.test.core)
     androidTestImplementation(platform(libs.compose.bom))
-    implementation(libs.bundles.test)
+    testImplementation(libs.bundles.test.common)
+    testImplementation(libs.bundles.test.local)
+    androidTestImplementation(libs.bundles.test.common)
+    androidTestImplementation(libs.bundles.test.android)
+    kaptAndroidTest(libs.dagger.compiler)
 }

@@ -54,7 +54,4 @@ dependencies {
     implementation(libs.bundles.core)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
-
-    androidTestImplementation(platform(libs.compose.bom))
-    implementation(libs.bundles.test)
 }

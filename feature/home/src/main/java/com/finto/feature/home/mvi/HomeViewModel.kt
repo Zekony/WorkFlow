@@ -14,6 +14,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import org.orbitmvi.orbit.annotation.OrbitExperimental
+import org.orbitmvi.orbit.syntax.simple.SimpleSyntax
 import org.orbitmvi.orbit.syntax.simple.blockingIntent
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
@@ -53,14 +54,16 @@ class HomeViewModel @Inject constructor(
 
     private fun getCurrentUser() = intent {
         val firebaseUser = googleAuthUiClient.getCurrentUser().firstOrNull()
-        firebaseUser?.let {
+        firebaseUser?.let { user ->
             reduce {
                 state.copy(
-                    user = it
+                    user = user
                 )
             }
-            val userIds = getUsersProjectIds(state.user).await()
-            if (userIds.isNotEmpty()) getAllProjects(userIds) else {
+            val ids = getUsersProjectIds(user).await()
+            if (ids.isNotEmpty()) {
+                getAllProjects(ids)
+            } else {
                 reduce { state.copy(downloadState = DownloadState.Done) }
             }
         }
@@ -71,17 +74,16 @@ class HomeViewModel @Inject constructor(
             usersRepository.getUsersProjectIds(user).first().getOrNull() ?: emptyList()
         }
 
-    private fun getAllProjects(userIds: List<String>) = intent {
+    private suspend fun SimpleSyntax<HomeState, HomeSideEffect>.getAllProjects(userIds: List<String>) {
         projectsRepository.getAllProjectsByUser(userIds).collect { result ->
             if (result.isSuccess) {
                 result.getOrNull()?.let { notNullResult ->
                     val completedProject = mutableMapOf<Boolean, Project>().apply {
-                        this.put(
+                        put(
                             notNullResult.projectTasks.isNotEmpty() && notNullResult.projectTasks.all { task -> task.completed },
                             notNullResult
                         )
                     }
-
                     reduce {
                         state.copy(
                             user = state.user.copy(userProjectsIds = userIds),

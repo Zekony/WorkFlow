@@ -50,6 +50,4 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.bundles.orbit)
 
-    androidTestImplementation(platform(libs.compose.bom))
-    implementation(libs.bundles.test)
 }

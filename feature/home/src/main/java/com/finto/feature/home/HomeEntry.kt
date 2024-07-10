@@ -20,7 +20,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.finto.feature.home.mvi.HomeSideEffect
-import com.finto.feature.home.mvi.HomeState
 import com.finto.feature.home.mvi.HomeViewModel
 import com.finto.feature.home.ui.HomeScreen
 import com.finto.resources.R
@@ -41,7 +40,7 @@ fun NavGraphBuilder.homeEntry(
 
         Scaffold(
             snackbarHost = { SnackbarHost(hostState = snackbarHost) },
-            topBar = { HomeTopBar(state) }
+            topBar = { HomeTopBar(state.user.name) }
         ) {
             Column(modifier = Modifier.padding(it)) {
                 HomeScreen(state, viewModel::dispatch)
@@ -68,7 +67,7 @@ fun NavGraphBuilder.homeEntry(
 }
 
 @Composable
-fun HomeTopBar(state: HomeState) {
+fun HomeTopBar(userName: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -81,7 +80,7 @@ fun HomeTopBar(state: HomeState) {
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.primary
             )
-            Text(text = state.user.name, style = MaterialTheme.typography.bodyLarge)
+            Text(text = userName, style = MaterialTheme.typography.bodyLarge)
         }
     }
 }

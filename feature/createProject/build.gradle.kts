@@ -46,13 +46,15 @@ dependencies {
 
     implementation(libs.androidx.navigation)
     implementation(libs.bundles.orbit)
-    // implementation(libs.bundles.media3)
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.androidx.compose)
     kapt(libs.hilt.androidx.compiler)
-
+    implementation(libs.test.core)
     androidTestImplementation(platform(libs.compose.bom))
-    implementation(libs.bundles.test)
-}
+    testImplementation(libs.bundles.test.common)
+    testImplementation(libs.bundles.test.local)
+    androidTestImplementation(libs.bundles.test.common)
+    androidTestImplementation(libs.bundles.test.android)
+    kaptAndroidTest(libs.dagger.compiler)}

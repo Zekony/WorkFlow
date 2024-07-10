@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.finto.feature.home.mvi.HomeEvent
@@ -17,7 +18,11 @@ import com.finto.resources.R
 @Composable
 fun NoProjectsScreen(onEvent: (HomeEvent) -> Unit) {
     SearchRow(onEvent = onEvent)
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .testTag(stringResource(R.string.no_projects_test_tag)),
+        contentAlignment = Alignment.Center
+    ) {
         Text(
             text = stringResource(R.string.no_projects_yet),
             style = MaterialTheme.typography.bodyLarge,

@@ -52,6 +52,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
@@ -78,8 +81,12 @@ dependencies {
 
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
-
+    implementation(libs.test.core)
     androidTestImplementation(platform(libs.compose.bom))
-    implementation(libs.bundles.test)
+    testImplementation(libs.bundles.test.common)
+    testImplementation(libs.bundles.test.local)
+    androidTestImplementation(libs.bundles.test.common)
+    androidTestImplementation(libs.bundles.test.android)
+    kaptAndroidTest(libs.dagger.compiler)
 
 }

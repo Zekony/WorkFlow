@@ -29,4 +29,9 @@
     <string name="sign_out_icon_description">sign out icon</string>
     <string name="sign_out_button">sign out button</string>
     <string name="profile">Profile</string>
+
+
+    <string name="loading_user_test_tag">loading user</string>
+    <string name="no_projects_test_tag">no projects</string>
+    <string name="projects_title_test_tag">projects title</string>
 </resources>
