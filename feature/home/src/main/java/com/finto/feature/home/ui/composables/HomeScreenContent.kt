@@ -11,7 +11,7 @@ import com.finto.resources.R
 @Composable
 fun HomeScreenContent(state: HomeState, onEvent: (HomeEvent) -> Unit) {
 
-    SearchRow(state.searchInput, onEvent)
+    SearchRow(searchInput = state.searchInput, onEvent = onEvent)
 
     when (state.searchFilter) {
         SearchFilter.ByCompleted -> {

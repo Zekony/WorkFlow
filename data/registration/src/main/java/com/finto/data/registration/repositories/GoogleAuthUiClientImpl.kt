@@ -1,7 +1,6 @@
 package com.finto.data.registration.repositories
 
 import android.content.Context
-import android.util.Log
 import androidx.credentials.ClearCredentialStateRequest
 import androidx.credentials.CredentialManager
 import androidx.credentials.GetCredentialRequest
@@ -75,7 +74,6 @@ class GoogleAuthUiClientImpl @Inject constructor(
     }
 
     override suspend fun signOut() {
-        Log.d("Zenais", "GoogleAuthUiClientImpl: sign Out")
         firebaseAuth.signOut()
         credentialManager.clearCredentialState(
             ClearCredentialStateRequest()

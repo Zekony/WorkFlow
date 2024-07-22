@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -24,11 +23,10 @@ import androidx.compose.ui.unit.dp
 import com.finto.feature.home.mvi.HomeEvent
 import com.finto.resources.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchRow(searchInput: String = "", onEvent: (HomeEvent) -> Unit) {
+fun SearchRow(modifier: Modifier = Modifier, searchInput: String = "", onEvent: (HomeEvent) -> Unit) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(IntrinsicSize.Min),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
@@ -37,7 +35,7 @@ fun SearchRow(searchInput: String = "", onEvent: (HomeEvent) -> Unit) {
             value = searchInput,
             onValueChange = { onEvent(HomeEvent.OnSearchInput(it)) },
             textStyle = MaterialTheme.typography.bodyMedium,
-            colors = TextFieldDefaults.textFieldColors(containerColor = MaterialTheme.colorScheme.surface),
+            colors = TextFieldDefaults.colors(focusedContainerColor = MaterialTheme.colorScheme.surface),
             placeholder = {
                 Text(
                     text = stringResource(R.string.search_tasks_placeholder),

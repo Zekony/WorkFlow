@@ -1,7 +1,6 @@
 package com.finto.feature.registration.mvi
 
 import android.content.Context
-import android.util.Log
 import com.finto.domain.registration.EmailAndPassAuthRepository
 import com.finto.domain.registration.GoogleAuthUiClient
 import com.finto.feature.registration.util.containsAscii
@@ -80,7 +79,6 @@ class RegistrationViewModel @Inject constructor(
 
     private fun checkRegistration() = intent {
         val currentUser = googleAuthUiClient.getCurrentUser().firstOrNull()
-        Log.d("Zenais", "RegistrationViewModel: currentUser $currentUser")
         if (currentUser == null) {
             reduce {
                 state.copy(isRegistered = UserRegistrationState.NotRegistered)

@@ -11,8 +11,8 @@ import com.finto.domain.home.entities.User
 import com.finto.feature.home.mvi.DownloadState
 import com.finto.feature.home.mvi.HomeState
 import com.finto.feature.home.ui.HomeScreen
+import com.finto.resources.theme.WorkFlowTheme
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -64,20 +64,12 @@ class HomeScreenInstrumentedTest {
         )
     )
 
-    @Before
-    fun setUp() {
-//        vm = HomeViewModel(
-//            projectsRepository = projectsRepository,
-//            googleAuthUiClient = googleClient,
-//            usersRepository = usersRepository
-//        )
-
-    }
-
     @Test
     fun onEmptyUserShowLoadingBar() {
         composeRule.setContent {
-            HomeScreen(HomeState()) {}
+            WorkFlowTheme {
+                HomeScreen(HomeState()) {}
+            }
         }
 
         composeRule.onNodeWithTag("loading user").assertIsDisplayed()
@@ -88,12 +80,14 @@ class HomeScreenInstrumentedTest {
         val testState = HomeState(
             user = testUser,
             allProjectsList = emptyList(),
-            downloadState = DownloadState.Done
+            downloadState = DownloadState.Done,
+            searchInput = ""
         )
         composeRule.setContent {
-            HomeScreen(testState) {}
+            WorkFlowTheme {
+                HomeScreen(testState) {}
+            }
         }
-
         composeRule.onNodeWithTag("no projects").assertIsDisplayed()
     }
 
