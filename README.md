@@ -13,6 +13,7 @@ A task tracking app for teams, with registration via email or Google account.
 - DataStore
 - Firebase Realtime Database
 - Firebase Google Authentication
+- Credential manager
 
 ## Content
 
